@@ -1,0 +1,32 @@
+{
+  "user": [
+    {
+      "CourseCategories": "Data Structure",
+      "CourseTopic": "java script",
+      "CourseDescription": "data  about java script",
+      "CourseImage": "C:\\fakepath\\js.png",
+      "id": 1
+    },
+    {
+      "CourseCategories": "Data Structure",
+      "CourseTopic": "data about data",
+      "CourseDescription": "AVSSDS",
+      "CourseImage": "C:\\fakepath\\abc.jpg",
+      "id": 5
+    },
+    {
+      "CourseCategories": "Artificial Intelligence",
+      "CourseTopic": "Machine Learning",
+      "CourseDescription": "ABCD",
+      "CourseImage": "C:\\fakepath\\js.png",
+      "id": 6
+    },
+    {
+      "CourseCategories": "Data Structure",
+      "CourseTopic": "data about data",
+      "CourseDescription": "",
+      "CourseImage": "",
+      "id": 7
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+<!--Home Header Part-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark"> 
+    <a class="navbar-brand" href="#">
+        <img src="/assets/images/brand-logo.jpg" style="max-width:30px; margin-top: 0px;" class="img-fluid">
+        <span style="display: inline-block;">ULearn</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">AboutUs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Data Science</a>
+            <a class="dropdown-item" href="#">Personal Development</a>
+            <a class="dropdown-item" href="#">Programming Languages</a>
+            <a class="dropdown-item" href="#">Information Technology</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Certifications</a>
+            <a class="dropdown-item" href="#">Upcoming Quizzes</a>
+            </div>
+        </li>
+        </ul>
+        <form class="form-inline ml-auto mr-auto" action="#">
+            <input class="form-control form-control-sm-1 ml-3 w-75" type="text" size="60" placeholder="What are you looking for?"
+              aria-label="Search" style="border: none; outline: none; overflow: hidden;">
+        </form>
+        <!--Model start according to switch-->
+        <div class="nav navbar-nav " style="display:flex;">
+            <div [ngSwitch]="isLoggedin">
+                <div *ngSwitchCase="false"> <button type="button" class="btn btn-primary glow-on-hover">SignIn with Google</button> </div>
+                <div *ngSwitchCase="true">
+                    <!--Model of facilitator and Learner-->
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success">
+                          <input type="radio" name="options1" id="tutorprofile" autocomplete="off" data-toggle="modal" data-target="#myModalforfacilitator" (click)="showModel()" tabindex="-1" role="dialog" aria-labelledby="exampleModalTutor" aria-hidden="true" checked> Facilitator 
+                        </label>
+                        <div *ngIf="showModal">
+                            <div id="myModalforfacilitator" class="modal fade" >
+                              <div class="modal-dialog modal-dialog-centered" id="modalFullscreen" role="document">
+                                  <div class="modal-content">
+                                      <!--..................-->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabeltutor">Welcome Back {{name}}!  We are as excited as you.</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">   
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col">
+                                                    <form class="card">
+                                                        <div class="card-body row no-gutters align-items-center">
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-search h4 text-body"></i>
+                                                            </div>
+                                                            <!--end of col-->
+                                                            <div class="col-auto">
+                                                                <input class="form-control form-control-borderless" type="search" size="78" placeholder="Explore our courses or search a keyword" style="font-size: 18px;">
+                                                            </div>
+                                                            <!--end of col-->
+                                                            <div class="col-auto">
+                                                                <button class="btn btn-success" type="submit">Search</button>
+                                                            </div>
+                                                            <!--end of col-->
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--end of col-->
+                                                <div class="bt more-bt" href="javascript:void(0)" style="text-align: center; text-shadow:1px 1px 0 rgb(68, 68, 68); left:65px;" data-toggle="modal" data-target="#uploadModal">
+                                                    <span class="fl"></span><span class="sfl"></span><span class="cross"></span>
+                                                    <b>Add</b>
+                                                </div>
+                                                <!--form opening-->
+                                                <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelupload" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header" style="background-color: rgb(13, 153, 13); color: white;">
+                                                            <h4 >Add Course cards</h4>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body" style="background-color: rgb(223, 233, 227); color: green;">
+                                                            <!--Form of Enrolled Students...-->
+                                                            <form #myForm="ngForm">
+                                                                <div class="form-group background-color:white">
+                                                                    <label for="Categories"> Select Course Categories</label>
+                                                                    <select class="form-control" id="CourseCategoriesid" name="CourseCategories" style="background-color: white;"  ngModel>
+                                                                      <option>Artificial Intelligence</option>
+                                                                      <option>Computer Network</option>
+                                                                      <option> Data Structure</option> 
+                                                                     </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="Topic"> Course Name </label>
+                                                                    <input type="text" class="form-control" id="CourseTopicid" name="CourseTopic" placeholder=" "ngModel>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="Description">CourseDescription</label>
+                                                                    <textarea class="form-control" id="CourseDescriptionid" name="CourseDescription" rows="3" ngModel></textarea>
+                                                                </div>
+                                                               <!--<div class="file-field">
+                                                                    <label for="images">Attch Course Image</label>
+                                                                    <input type="file" class="form-control-file" id="CourseImageid" name="CourseImage" ngModel>
+                                                                </div>
+                                                                <div class="form-group">   
+                                                                     <label for="inputContent"><b>Choose profile image</b> </label>
+                                                                     <img [src]="url" width="100"height="100" alt="" >  
+                                                                     <input type="file" id="inputImage" name="image" ngModel (change)="selectFile($event)" >
+                                                                </div>-->
+                                                                <div class="file-field">
+                                                                    <div class="btn btn-default  btn-sm float-left">
+                                                                      <span>Choose file</span>
+                                                                      <img [src]="url" width="100"height="100" alt="" > 
+                                                                      <input type="file" class="form-control-file" id="CourseImageid" name="CourseImage" (change)="onselectFile($event)" ngModel>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                          
+                                                                <button type="submit" class="btn btn-success" (click)=" addUser(myForm.value)">Submit</button>
+                                                                
+                                                              </form>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--conntainer closeing-->
+                                        <br/>
+                                        <!--form of adding cards from facilitator-->
+                                        
+                                        <!--Cards For loop-->
+                                        <div class="container">
+                                            <div class="row row-cols-3 row-cols-md-4" id="mycoursecards">
+                                                <div *ngFor="let entry of allTutorCards">
+                                                    <div class="col col mb-4">
+                                                        <div class="card mx-auto" style="width: 16rem; height: auto">
+                                                                <img src={{entry.CourseImage}} class="card-img-top" style="height: 10rem">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">{{entry.CourseTopic}}</h5>
+                                                                    <p class="card-text">{{entry.CourseDescription}}</p>
+                                                                    <button type="button" class="btn btn-success">Goto Course</button>
+                                                                    <!--
+                                                                    <button type="button" class="btn btn-success" (click)="publishCard(myForm.value)">Publish</button>
+                                                                    -->
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                                    </div>
+                                    <!--.................-->
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <!--Button of learner-->
+                        <label class="btn btn-success" style="margin-right: 50px;">
+                          <input type="radio" name="options2" id="studentprofile" autocomplete="off" data-toggle="modal" data-target="#myModalforlearner" (click)="showModels()" tabindex="-1" role="dialog" aria-labelledby="exampleModalStudent" aria-hidden="true" > Learner
+                        </label>
+                        <div *ngIf="showModals">
+                            <div id="myModalforlearner" class="modal fade">
+                              <div class="modal-dialog modal-dialog-centered" id="modalFullscreen" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabelstudent">Welcome back {{name}}!  We are as excited as you.</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!--display the model of learner-->
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col">
+                                                    <form class="card">
+                                                        <div class="card-body row no-gutters align-items-center">
+                                                            <div class="col-auto">
+                                                                <i class="fas fa-search h4 text-body"></i>
+                                                            </div>
+                                                            <!--end of col-->
+                                                            <div class="col-auto">
+                                                                <input class="form-control form-control-borderless" type="search" size="78" placeholder="Explore our courses or search a keyword" style="font-size: 18px;">
+                                                            </div>
+                                                            <!--end of col-->
+                                                            <div class="col-auto">
+                                                                <button class="btn btn-success" type="submit">Search</button>
+                                                            </div>
+                                                            <!--end of col-->
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--end of col-->
+                                                <!--
+                                                
+                                                <div class="bt more-bt" href="javascript:void(0)" style="text-align: center; text-shadow:1px 1px 0 rgb(68, 68, 68); left:65px;" data-toggle="modal" data-target="#uploadModal">
+                                                    <span class="fl"></span><span class="sfl"></span><span class="cross"></span><i></i>
+                                                    <b>Enroll</b>
+                                                </div>
+                                            -->
+                                                <!--form opening-->
+                                                <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelupload" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!--Form of Enrolled Students...-->
+                                                            <form>
+                                                                <div class="form-group">
+                                                                  <label for="exampleInputEmail1">Email address</label>
+                                                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                  <label for="exampleInputPassword1">Password</label>
+                                                                  <input type="password" class="form-control" id="exampleInputPassword1">
+                                                                </div>
+                                                                <div class="form-group form-check">
+                                                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                              </form>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--conntainer closeing-->
+                                        <br/>
+                                        <div class="container">
+                                            <div >
+                                              <h4 class="text-success">My Courses</h4>
+                                              <p class="text-success">Learn Programing Language  at your own pace.Become an expert</p>
+                                              <hr  style="border:1px solid rgb(18, 218, 35) ; ">
+                                            </div>
+                                        </div>
+                                        <!--Cards of  cards-->
+                                        <div class="container">
+                                            <div class="row row-cols-3 row-cols-md-4" id="mycoursecards">
+                                                <div *ngFor="let entry of mycourses">
+                                                    <div class="col mb-4">
+                                                        <div class="card mx-auto" style="width: 16rem; height: auto">
+                                                                <img src={{entry.imglink}} class="card-img-top" style="height: 10rem">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">{{entry.courseName}}</h5>
+                                                                    <h6 class="card-subtitle mb-2 text-muted">{{entry.duration}}</h6>
+                                                                    <p class="card-text">{{entry.description}}</p>
+                                                                    <button type="button" class="btn btn-success">Goto Course</button>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="container">
+                                        <div class="container">
+                                            <div class="row row-cols-3 row-cols-md-4" id="allStudentCards">
+                                                <div *ngFor="let entry of allStudentCards">
+                                                    <div class="col mb-4">
+                                                        <div class="card mx-auto" style="width: 16rem; height: auto">
+                                                                <img src={{entry.PImage}} class="card-img-top" style="height: 10rem">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">{{entry.PTopic}}</h5>
+                                                                    <h6 class="card-subtitle mb-2 text-muted">{{entry.PDescription}}</h6>
+                                                                    <p class="card-text">{{entry.PDescription}}</p>
+                                                                    <button type="button" class="btn btn-success">Goto Course</button>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Student courses cards..........-->
+                                    <app-student></app-student>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <!--............-->
+                    </div>
+                    <button type="button" class="btn btn-primary glow-on-hover">Sign Out</button>
+                </div>
+                <div *ngSwitchDefault> <button type="button" class="btn btn-primary glow-on-hover">SignIn with Google</button> </div> 
+            </div>
+           <!-- <li *ngIf="!LoggedIn" class="nav-item">
+                <button type="button" class="btn btn-primary glow-on-hover">SignIn with Google</button>   
+            </li>
+            <li *ngIf="LoggedIn" class="nav-item">
+                <button type="button" class="btn btn-primary glow-on-hover">Sign Out</button> 
+            </li> -->
+        </div>
+    </div>
+</nav>
