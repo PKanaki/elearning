@@ -17,9 +17,9 @@ getpgmcourses():Observable<Ipcourses>
 {
   return this.http.get<Ipcourses>(this._url);
 }
+// or
 
-
-getAllStudentCards()
+getAllCoursestCards()
 {
   return this.http.get(this._url);
 }

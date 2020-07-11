@@ -1,0 +1,78 @@
+<p>uploadvideos works!</p>
+<br>
+<div class="card">
+   <div class="card-body ">
+      <h1 class="card-title  "> Upload Your own Courses videos</h1>
+      <p class="card-text "> This will genrate the card according to your course profile form details according to that you have to upload your video by clicking the card button.</p>
+     <!-- Button trigger modal -->
+      <button  type="button " class="btn btn-success"  data-toggle="modal" data-target="#exampleModal">
+       Generarate Profile Cource</button>
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Genrate cource Profile</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+              </div>
+              <div class="modal-body">
+                   <!--Cource form-->
+                  <form #myUploadVideoForm="ngForm">
+      
+                      <div class="form-group">
+                          <label for="inputName"><b>Title</b></label>
+                          <input type="text" class="form-control" id="inputName"name="VideoTitle" placeholder="Subject name" ngModel>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputContent"><b>Add your Description</b></label>
+                          <input type="text" class="form-control" id="inputContent" name="VideoDescription" placeholder="Content" ngModel>
+                      </div> 
+
+
+                      <div class="file-field">
+                        <label for="inputContent"><b>Choose video</b> </label>
+                        <div class="btn btn-default  btn-sm float-left">
+                          <span>Choose file</span>
+                          <source [src]="url" type="video/mp4">
+                          <input type="file" class="form-control-file" id="videoid" name="videourl" (change)="selectFile($event)" ngModel>
+                        </div>
+                       
+                    </div>
+                     
+                  </form>
+              </div>
+              <div class="modal-footer">
+                 <button type="submit" class="btn btn-success"  (click)="addUploadData(myUploadVideoForm.value)" data-dismiss="modal" >Genrate cource Profile</button>
+              </div>
+         </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="row row-cols-3 row-cols-md-4" id="allUploadvideo">
+        <div *ngFor="let entry of allUploadvideo">
+            <div class="col col mb-4">
+                <div class="card mx-auto" style="width: 16rem; height: auto">
+                
+                        <video width="auto" height="auto" controls>
+                            <source src={{entry.CourseImage}} type="video/mp4">
+                            <source src={{entry.CourseImage}} type="video/ogg">
+                            Your browser does not support the video tag.
+                          </video>
+                        <div class="card-body" style="width: auto; height: auto;">
+                            <h5 class="card-title">{{entry.VideoTitle}}</h5>
+                            <p class="card-text">{{entry.VideoDescription}}</p>
+                           
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

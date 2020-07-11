@@ -11,28 +11,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">AboutUs</a>
+            <a class="nav-link"(click)="toAboutUs()"  >AboutUs<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" (click)="toContact()">Contact</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Data Science</a>
-            <a class="dropdown-item" href="#">Personal Development</a>
-            <a class="dropdown-item" href="#">Programming Languages</a>
-            <a class="dropdown-item" href="#">Information Technology</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Certifications</a>
-            <a class="dropdown-item" href="#">Upcoming Quizzes</a>
-            </div>
+        <li class="nav-item">
+            <a class="nav-link"  (click)="toCourses()" >Courses</a>
         </li>
+    
         </ul>
         <form class="form-inline ml-auto mr-auto" action="#">
             <input class="form-control form-control-sm-1 ml-3 w-75" type="text" size="60" placeholder="What are you looking for?"
@@ -146,7 +136,7 @@
                                         
                                         <!--Cards For loop-->
                                         <div class="container">
-                                            <div class="row row-cols-3 row-cols-md-4" id="mycoursecards">
+                                            <div class="row row-cols-3 row-cols-md-4" id="allTutorCards">
                                                 <div *ngFor="let entry of allTutorCards">
                                                     <div class="col col mb-4">
                                                         <div class="card mx-auto" style="width: 16rem; height: auto">
@@ -154,7 +144,7 @@
                                                                 <div class="card-body">
                                                                     <h5 class="card-title">{{entry.CourseTopic}}</h5>
                                                                     <p class="card-text">{{entry.CourseDescription}}</p>
-                                                                    <button type="button" class="btn btn-success">Goto Course</button>
+                                                                    <button type="button"  routerLink="/uploadvideos" class="btn btn-success">Goto Course</button>
                                                                     <!--
                                                                     <button type="button" class="btn btn-success" (click)="publishCard(myForm.value)">Publish</button>
                                                                     -->
@@ -217,7 +207,7 @@
                                                     <b>Enroll</b>
                                                 </div>
                                             -->
-                                                <!--form opening-->
+                                                <!--form opening
                                                 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelupload" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                       <div class="modal-content">
@@ -227,7 +217,7 @@
                                                           </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <!--Form of Enrolled Students...-->
+                                                         
                                                             <form>
                                                                 <div class="form-group">
                                                                   <label for="exampleInputEmail1">Email address</label>
@@ -247,7 +237,7 @@
                                                         </div>
                                                       </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div><!--conntainer closeing-->
                                         <br/>
@@ -278,10 +268,13 @@
                                         </div>
                                     
                                     </div>
+
+                                    <!------------------------------------------------------------------->
+                                    <!--courses category cards for carousel pupose
                                     <div class="container">
                                         <div class="container">
-                                            <div class="row row-cols-3 row-cols-md-4" id="allStudentCards">
-                                                <div *ngFor="let entry of allStudentCards">
+                                            <div class="row row-cols-3 row-cols-md-4" id="allCoursesCards">
+                                                <div *ngFor="let entry of allCoursesCards">
                                                     <div class="col mb-4">
                                                         <div class="card mx-auto" style="width: 16rem; height: auto">
                                                                 <img src={{entry.PImage}} class="card-img-top" style="height: 10rem">
@@ -297,6 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                -->
                                     <!--Student courses cards..........-->
                                     <app-student></app-student>
                                     <div class="modal-footer">
@@ -321,3 +315,10 @@
         </div>
     </div>
 </nav>
+<!--
+<app-home></app-home>
+<app-cards></app-cards>
+<app-jumbotrons></app-jumbotrons>
+<app-footer></app-footer>
+
+-->

@@ -16,7 +16,7 @@ import { StudentComponent } from './student/student.component';
 import { TutorComponent } from './tutor/tutor.component';
 import { StarthomeComponent } from './starthome/starthome.component';
 import { PgmcourseserviceService } from './services/pgmcourseservice.service';
-
+import { UploadvideosComponent } from './uploadvideos/uploadvideos.component';
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { PgmcourseserviceService } from './services/pgmcourseservice.service';
     CardsComponent,
     StudentComponent,
     TutorComponent,
-    StarthomeComponent
+    StarthomeComponent,
+    UploadvideosComponent
   ],
   imports: [
     BrowserModule,

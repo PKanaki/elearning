@@ -16,11 +16,11 @@ export class StudentComponent implements OnInit {
   constructor(private _mypgmcoursesservice:PgmcourseserviceService) { }
 
   ngOnInit(): void {
-   
+   /*
     this._mypgmcoursesservice.getpgmcourses()
     .subscribe(data => this.pgmcourses =data);
   
-  
+  */
 }
 /*
 getLatestStudentCards(){

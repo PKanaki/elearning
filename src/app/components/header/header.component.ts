@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   public showModals = null;
   public name = 'Anusha';
   allTutorCards:Object;
-  allStudentCards:Object;
+  allCoursesCards:Object;
 
   allProgramCards :Object; 
   constructor(private _myService: AuthserviceService, private _coursesService: DashcoursesService,private tCardsService:TcardService,private _pgmcourseService:PgmcourseserviceService ) {}
@@ -73,12 +73,21 @@ onselectFile(e){
       this.allTutorCards =response
     })
   }
-
+//get courses cards for carousel
   getLatesStudentCards(){
-    this._pgmcourseService.getAllStudentCards().subscribe((response)=>{
-      this.allStudentCards =response
+    this._pgmcourseService.getAllCoursestCards().subscribe((response)=>{
+      this.allCoursesCards =response
     })
   }
-   
+  //
+ toContact(){
+   document.getElementById("footer").scrollIntoView({behavior:"smooth"});
+ }
+ toAboutUs(){
+  document.getElementById("jambotrons").scrollIntoView({behavior:"smooth"});
+ }
+ toCourses(){
+  document.getElementById("cards").scrollIntoView({behavior:"smooth"});
+ }
   
 }
